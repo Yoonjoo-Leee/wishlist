@@ -50,23 +50,6 @@ export default function WishItemCard({ item }: Props) {
         <span className={`wish-card__badge ${badge.cls}`}>{badge.text}</span>
       </div>
 
-      <h3 className="wish-card__name">{item.name}</h3>
-      <p className="wish-card__price">{formatPrice(item.price)}</p>
-
-      {item.url && (
-        <a
-          className="wish-card__url"
-          href={item.url}
-          target="_blank"
-          rel="noreferrer noopener"
-        >
-          {displayHost(item.url)}
-          <span aria-hidden> ↗</span>
-        </a>
-      )}
-
-      <p className="wish-card__reason">{item.reason}</p>
-
       {deliberating && (
         <div
           className="wish-card__progress"
@@ -84,6 +67,23 @@ export default function WishItemCard({ item }: Props) {
           />
         </div>
       )}
+
+      <h3 className="wish-card__name">{item.name}</h3>
+      <p className="wish-card__price">{formatPrice(item.price)}</p>
+
+      {item.url && (
+        <a
+          className="wish-card__url"
+          href={item.url}
+          target="_blank"
+          rel="noreferrer noopener"
+        >
+          {displayHost(item.url)}
+          <span aria-hidden> ↗</span>
+        </a>
+      )}
+
+      <p className="wish-card__reason">{item.reason}</p>
 
       <div className="wish-card__meta">
         <span>입소 {formatDate(item.createdAt)}</span>

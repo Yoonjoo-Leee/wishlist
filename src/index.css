@@ -391,11 +391,11 @@ body {
 }
 
 .wish-card__progress {
-  height: 6px;
+  height: 4px;
   border-radius: 999px;
   background: var(--surface-2);
   overflow: hidden;
-  margin-bottom: 12px;
+  margin: 2px 0 14px;
 }
 
 .wish-card__progress-fill {
