@@ -48,6 +48,14 @@ export function daysLeft(item: WishItem, now: Date = new Date()): number {
   return Math.max(0, Math.ceil(diff / DAY_MS));
 }
 
+/** 숙려 진행률 0~1 (숙려 시작 → 종료 기준, 범위 밖은 clamp) */
+export function deliberationProgress(item: WishItem, now: Date = new Date()): number {
+  const start = deliberationStartAt(item).getTime();
+  const end = deliberationEndsAt(item).getTime();
+  if (end <= start) return 1;
+  return Math.min(1, Math.max(0, (now.getTime() - start) / (end - start)));
+}
+
 /** 등록 후 경과 일수 */
 export function daysSinceCreated(item: WishItem, now: Date = new Date()): number {
   return Math.floor((now.getTime() - new Date(item.createdAt).getTime()) / DAY_MS);

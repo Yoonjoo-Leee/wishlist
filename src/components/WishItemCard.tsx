@@ -4,6 +4,7 @@ import {
   CATEGORY_SLUG,
   daysLeft,
   deliberationEndsAt,
+  deliberationProgress,
   displayHost,
   formatDate,
   formatPrice,
@@ -31,6 +32,9 @@ function badgeFor(item: WishItem): { text: string; cls: string } {
 export default function WishItemCard({ item }: Props) {
   const catSlug = CATEGORY_SLUG[item.category] ?? "etc";
   const badge = badgeFor(item);
+  const deliberating = item.status === "deliberating";
+  const due = deliberating && isDecisionDue(item);
+  const progress = Math.round(deliberationProgress(item) * 100);
 
   return (
     <article className="wish-card">
@@ -62,6 +66,24 @@ export default function WishItemCard({ item }: Props) {
       )}
 
       <p className="wish-card__reason">{item.reason}</p>
+
+      {deliberating && (
+        <div
+          className="wish-card__progress"
+          role="progressbar"
+          aria-valuenow={progress}
+          aria-valuemin={0}
+          aria-valuemax={100}
+          aria-label="숙려 진행률"
+        >
+          <span
+            className={`wish-card__progress-fill ${
+              due ? "wish-card__progress-fill--due" : ""
+            }`}
+            style={{ width: `${progress}%` }}
+          />
+        </div>
+      )}
 
       <div className="wish-card__meta">
         <span>입소 {formatDate(item.createdAt)}</span>
