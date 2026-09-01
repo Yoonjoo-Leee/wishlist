@@ -30,8 +30,8 @@
 - 데이터 모델은 `src/types.ts`의 `WishItem`
 
 ## 화면 구조
-- `src/App.tsx` 공통 레이아웃(헤더 + Outlet + 하단 탭바). 탭: 홈 `/` / 조정실 `/decision`(대기 건수 배지) / 캠프 기록 `/stats` / 입소 `/register`
-- `src/pages/Home.tsx` 홈(요약 카드 3개 + 결정 대기 배너 + 숙려 중 리스트)
+- `src/App.tsx` 공통 레이아웃(헤더 + Outlet + 하단 탭바). 탭: 캠프 현황 `/` / 조정실 `/decision`(대기 건수 배지) / 캠프 기록 `/stats` / 입소 `/register`
+- `src/pages/Home.tsx` 캠프 현황(요약 카드 3개 + 결정 대기 배너 + 상태별 리스트)
 - `src/pages/Register.tsx` 위시템 등록 폼 → 제출 시 `addItem` 후 홈으로 이동
 - `src/pages/Decision.tsx` 결정 대기 목록. 카드별 구매 결정 / 재숙려(1~7일, 최대 2회) / 구매 포기, 결정 이유 입력
 - `src/pages/ItemDetail.tsx` `/item/:id` 상세(상품/등록/숙려 정보) + 인라인 수정(`updateItem`) / 삭제(`removeItem`, confirm)

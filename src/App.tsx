@@ -2,10 +2,13 @@ import { NavLink, Outlet } from "react-router-dom";
 import { useWishItems } from "./lib/store";
 import { dueItems } from "./lib/wishItems";
 
-function IconHome() {
+function IconStatus() {
+  // 장바구니(shopping cart)
   return (
-    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round">
-      <path d="M3 10.5 12 4l9 6.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z" />
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="9" cy="20" r="1.4" />
+      <circle cx="18" cy="20" r="1.4" />
+      <path d="M2.5 3.5h2.2l2.5 11.5a1.6 1.6 0 0 0 1.6 1.3h8.6a1.6 1.6 0 0 0 1.6-1.2L20.5 7H6" />
     </svg>
   );
 }
@@ -61,8 +64,8 @@ export default function App() {
       <nav className="tabbar">
         <div className="tabbar__inner">
           <NavLink to="/" end className={tabClass}>
-            <IconHome />
-            <span>홈</span>
+            <IconStatus />
+            <span>캠프 현황</span>
           </NavLink>
           <NavLink to="/decision" className={tabClass}>
             <span className="tabbar__icon-wrap">
