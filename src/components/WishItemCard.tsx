@@ -18,11 +18,19 @@ function formatMonthDay(d: Date): string {
   return `${d.getMonth() + 1}월 ${d.getDate()}일`;
 }
 
+function badgeFor(item: WishItem): { text: string; cls: string } {
+  if (item.status === "decided")
+    return { text: "구매 승인", cls: "wish-card__badge--decided" };
+  if (item.status === "abandoned")
+    return { text: "관계 종료", cls: "wish-card__badge--abandoned" };
+  if (isDecisionDue(item))
+    return { text: "결정 대기", cls: "wish-card__badge--due" };
+  return { text: `D-${daysLeft(item)}`, cls: "" };
+}
+
 export default function WishItemCard({ item }: Props) {
-  const due = isDecisionDue(item);
-  const left = daysLeft(item);
-  const endsAt = deliberationEndsAt(item);
   const catSlug = CATEGORY_SLUG[item.category] ?? "etc";
+  const badge = badgeFor(item);
 
   return (
     <article className="wish-card">
@@ -35,11 +43,7 @@ export default function WishItemCard({ item }: Props) {
         <span className={`wish-card__category wish-card__category--${catSlug}`}>
           {item.category}
         </span>
-        {due ? (
-          <span className="wish-card__badge wish-card__badge--due">결정 대기</span>
-        ) : (
-          <span className="wish-card__badge">D-{left}</span>
-        )}
+        <span className={`wish-card__badge ${badge.cls}`}>{badge.text}</span>
       </div>
 
       <h3 className="wish-card__name">{item.name}</h3>
@@ -61,8 +65,24 @@ export default function WishItemCard({ item }: Props) {
 
       <div className="wish-card__meta">
         <span>입소 {formatDate(item.createdAt)}</span>
-        <span aria-hidden>·</span>
-        <span>숙려 종료 {formatMonthDay(endsAt)}</span>
+
+        {item.status === "deliberating" && (
+          <>
+            <span aria-hidden>·</span>
+            <span>숙려 종료 {formatMonthDay(deliberationEndsAt(item))}</span>
+          </>
+        )}
+
+        {item.status !== "deliberating" && item.decidedAt && (
+          <>
+            <span aria-hidden>·</span>
+            <span>
+              {item.status === "decided" ? "승인" : "종료"}{" "}
+              {formatDate(item.decidedAt)}
+            </span>
+          </>
+        )}
+
         {item.reDeliberationCount > 0 && (
           <>
             <span aria-hidden>·</span>

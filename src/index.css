@@ -186,6 +186,8 @@ body {
 }
 
 .summary-card {
+  font: inherit;
+  width: 100%;
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius);
@@ -195,6 +197,12 @@ body {
   align-items: center;
   gap: 4px;
   box-shadow: var(--shadow);
+  cursor: pointer;
+  transition: border-color 0.12s, background 0.12s, transform 0.12s;
+}
+
+.summary-card:active {
+  transform: scale(0.98);
 }
 
 .summary-card__count {
@@ -209,10 +217,6 @@ body {
   color: var(--muted);
 }
 
-.summary-card--deliberating {
-  background: var(--brand-soft);
-  border-color: color-mix(in srgb, var(--brand) 25%, var(--border));
-}
 .summary-card--deliberating .summary-card__count {
   color: var(--brand);
 }
@@ -221,6 +225,25 @@ body {
 }
 .summary-card--abandoned .summary-card__count {
   color: var(--abandoned);
+}
+
+/* 선택된 필터 카드만 해당 톤으로 강조 */
+.summary-card--active.summary-card--deliberating {
+  background: var(--brand-soft);
+  border-color: color-mix(in srgb, var(--brand) 45%, var(--border));
+}
+.summary-card--active.summary-card--decided {
+  background: var(--decided-soft);
+  border-color: color-mix(in srgb, var(--decided) 45%, var(--border));
+}
+.summary-card--active.summary-card--abandoned {
+  background: var(--abandoned-soft);
+  border-color: color-mix(in srgb, var(--abandoned) 45%, var(--border));
+}
+
+.summary-card--active .summary-card__label {
+  color: var(--text);
+  font-weight: 600;
 }
 
 /* ---------- list ---------- */
@@ -331,6 +354,16 @@ body {
 .wish-card__badge--due {
   color: var(--due);
   background: var(--due-soft);
+}
+
+.wish-card__badge--decided {
+  color: var(--decided);
+  background: var(--decided-soft);
+}
+
+.wish-card__badge--abandoned {
+  color: var(--abandoned);
+  background: var(--abandoned-soft);
 }
 
 .wish-card__name {
