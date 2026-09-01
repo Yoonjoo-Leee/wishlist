@@ -23,7 +23,7 @@
 - `npm run dev` 개발 서버(5173), `npm run build` 타입체크 + 프로덕션 빌드
 - 상태는 `localStorage` 한 곳에만 저장. `src/lib/storage.ts`가 로드/저장, 최초 실행 시 `src/lib/dummyData.ts`로 시드
 - 목록 상태는 `src/lib/store.ts`의 모듈 스토어(`useSyncExternalStore`). `useWishItems()` 훅 + `addItem`/`updateItem`/`removeItem`/`resolveItem`/`reDeliberateItem`
-- 스토어 로드 시 결정 대기 30일 초과 항목을 "미결정 자동 포기"로 스윕(`sweepAutoAbandon`)
+- 스토어 로드 시 결정 대기 30일 초과 항목을 자동 퇴소(관계 종료, 사유 "장기 미조정으로 자동 퇴소되었습니다.")로 스윕(`sweepAutoAbandon`)
 - 도메인 로직(숙려 종료일, 결정 대기 여부, 재숙려 가능 여부, 카운트 등)은 `src/lib/wishItems.ts`. 숙려 종료는 `deliberationStartedAt ?? createdAt` + `deliberationDays` 기준(재숙려 시 `deliberationStartedAt` 갱신)
 - 데이터 모델은 `src/types.ts`의 `WishItem`
 
@@ -53,7 +53,7 @@ flowchart TD
     D -- "예" --> E["결정 대기"]
 
     E --> F{"결정 대기 30일 초과?"}
-    F -- "예" --> G["구매 포기<br/>사유: 미결정 자동 포기"]
+    F -- "예" --> G["관계 종료<br/>사유: 장기 미조정으로 자동 퇴소"]
     F -- "아니오" --> H["사용자 재판단"]
 
     H --> I{"어떻게 결정할까?"}
@@ -83,7 +83,7 @@ flowchart TD
     D -- "예" --> E["결정 대기"]
 
     E --> F{"결정 대기 30일 초과?"}
-    F -- "예" --> G["구매 포기<br/>사유: 미결정 자동 포기"]
+    F -- "예" --> G["관계 종료<br/>사유: 장기 미조정으로 자동 퇴소"]
     F -- "아니오" --> H["사용자 재판단"]
 
     H --> I{"어떻게 결정할까?"}

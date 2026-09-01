@@ -98,4 +98,17 @@ export const DUMMY_ITEMS: WishItem[] = [
     decidedAt: daysAgo(15),
     decisionReason: "결국 노트북과 폰으로 대부분 해결됨. 거치용도로 쓰기엔 비쌈.",
   },
+  {
+    // 숙려 종료 후 38일째 방치 → 앱 로드 시 sweepAutoAbandon이 자동 퇴소 처리
+    id: "seed-8",
+    url: "https://example.com/backpack",
+    name: "가죽 백팩",
+    price: 210000,
+    category: "패션",
+    reason: "출근용 가방이 낡았다. 오래 쓸 거라 좋은 걸로 사고 싶다.",
+    deliberationDays: 7,
+    createdAt: daysAgo(45),
+    status: "deliberating",
+    reDeliberationCount: 0,
+  },
 ];

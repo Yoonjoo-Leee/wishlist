@@ -8,7 +8,7 @@ import { isAutoAbandonDue } from "./wishItems";
  * 여러 화면이 동시에 같은 데이터를 보고, 변경 시 localStorage에 저장한다.
  */
 
-/** 결정 대기 30일 초과 항목을 자동 포기 처리 */
+/** 결정 대기 30일 초과 항목을 자동 퇴소(관계 종료) 처리 */
 function sweepAutoAbandon(list: WishItem[]): WishItem[] {
   const now = new Date();
   let changed = false;
@@ -18,7 +18,7 @@ function sweepAutoAbandon(list: WishItem[]): WishItem[] {
     return {
       ...it,
       status: "abandoned" as WishStatus,
-      decisionReason: "미결정 자동 종료",
+      decisionReason: "장기 미조정으로 자동 퇴소되었습니다.",
       decidedAt: now.toISOString(),
     };
   });

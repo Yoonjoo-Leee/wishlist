@@ -4,7 +4,7 @@ const DAY_MS = 24 * 60 * 60 * 1000;
 
 /** 재숙려 최대 횟수 */
 export const MAX_REDELIBERATION = 2;
-/** 결정 대기 상태로 이 일수를 넘기면 자동 포기 */
+/** 결정 대기 상태로 이 일수를 넘기면 자동 퇴소(관계 종료) */
 export const AUTO_ABANDON_DAYS = 30;
 
 /** 현재 숙려 시작 시각 (재숙려했으면 그 시점, 아니면 등록 시점) */
@@ -32,7 +32,7 @@ export function canReDeliberate(item: WishItem): boolean {
   return item.reDeliberationCount < MAX_REDELIBERATION;
 }
 
-/** 결정 대기 30일 초과 → 자동 포기 대상 */
+/** 결정 대기 30일 초과 → 자동 퇴소 대상 */
 export function isAutoAbandonDue(item: WishItem, now: Date = new Date()): boolean {
   return isDecisionDue(item, now) && daysOverdue(item, now) > AUTO_ABANDON_DAYS;
 }
