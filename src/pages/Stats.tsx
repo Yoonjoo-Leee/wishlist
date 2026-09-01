@@ -27,12 +27,12 @@ export default function Stats() {
     return (
       <div className="page">
         <div className="page-head">
-          <h2 className="page-head__title">통계</h2>
+          <h2 className="page-head__title">캠프 기록</h2>
         </div>
         <p className="empty">
           아직 데이터가 없어요.
           <br />
-          위시템을 등록하면 통계가 쌓여요.
+          위시템이 입소하면 기록이 쌓여요.
         </p>
       </div>
     );
@@ -45,14 +45,14 @@ export default function Stats() {
   return (
     <div className="page">
       <div className="page-head">
-        <h2 className="page-head__title">통계</h2>
+        <h2 className="page-head__title">캠프 기록</h2>
         <p className="page-head__desc">숙려가 지출에 어떤 영향을 줬는지 봐요.</p>
       </div>
 
       <section className={`stat-hero ${hasResolved ? "" : "stat-hero--muted"}`}>
         {hasResolved ? (
           <>
-            <span className="stat-hero__label">구매 포기율</span>
+            <span className="stat-hero__label">관계 종료율</span>
             <span className="stat-hero__value">{ratePct}%</span>
             <span className="stat-hero__sub">
               숙려로 아낀 금액 <strong>{formatPrice(amounts.abandoned)}</strong>
@@ -98,14 +98,14 @@ export default function Stats() {
           <div className="detail__row">
             <dt>
               <span className="dot dot--decided" />
-              구매 결정
+              구매 승인
             </dt>
             <dd>{formatPrice(amounts.decided)}</dd>
           </div>
           <div className="detail__row">
             <dt>
               <span className="dot dot--abandoned" />
-              구매 포기
+              관계 종료
             </dt>
             <dd>{formatPrice(amounts.abandoned)}</dd>
           </div>
@@ -125,7 +125,7 @@ export default function Stats() {
             <span className="stat-duo__value">
               {avgToDecision > 0 ? `${avgToDecision}일` : "-"}
             </span>
-            <span className="stat-duo__label">등록 → 결정 소요</span>
+            <span className="stat-duo__label">입소 → 결정 소요</span>
           </div>
         </div>
       </section>

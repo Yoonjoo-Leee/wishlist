@@ -18,7 +18,7 @@ function sweepAutoAbandon(list: WishItem[]): WishItem[] {
     return {
       ...it,
       status: "abandoned" as WishStatus,
-      decisionReason: "미결정 자동 포기",
+      decisionReason: "미결정 자동 종료",
       decidedAt: now.toISOString(),
     };
   });

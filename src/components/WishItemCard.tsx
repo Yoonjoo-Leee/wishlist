@@ -60,13 +60,13 @@ export default function WishItemCard({ item }: Props) {
       <p className="wish-card__reason">{item.reason}</p>
 
       <div className="wish-card__meta">
-        <span>등록 {formatDate(item.createdAt)}</span>
+        <span>입소 {formatDate(item.createdAt)}</span>
         <span aria-hidden>·</span>
         <span>숙려 종료 {formatMonthDay(endsAt)}</span>
         {item.reDeliberationCount > 0 && (
           <>
             <span aria-hidden>·</span>
-            <span>재숙려 {item.reDeliberationCount}회</span>
+            <span>유예 {item.reDeliberationCount}회</span>
           </>
         )}
       </div>

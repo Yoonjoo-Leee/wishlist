@@ -6,8 +6,8 @@ interface Props {
 
 const CARDS: { key: keyof StatusCounts; label: string; tone: string }[] = [
   { key: "deliberating", label: "숙려 중", tone: "deliberating" },
-  { key: "decided", label: "구매 결정", tone: "decided" },
-  { key: "abandoned", label: "구매 포기", tone: "abandoned" },
+  { key: "decided", label: "구매 승인", tone: "decided" },
+  { key: "abandoned", label: "관계 종료", tone: "abandoned" },
 ];
 
 export default function SummaryCards({ counts }: Props) {

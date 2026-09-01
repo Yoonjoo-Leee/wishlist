@@ -75,8 +75,8 @@ export function itemsByStatus(items: WishItem[], status: WishStatus): WishItem[]
 
 export const STATUS_LABEL: Record<WishStatus, string> = {
   deliberating: "숙려 중",
-  decided: "구매 결정",
-  abandoned: "구매 포기",
+  decided: "구매 승인",
+  abandoned: "관계 종료",
 };
 
 /** 카테고리 → CSS에서 쓰는 색상 슬러그 */

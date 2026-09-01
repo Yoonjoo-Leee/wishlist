@@ -3,6 +3,21 @@
 개인용 웹앱. 로그인 없이 브라우저 localStorage에 데이터 저장.
 충동구매 방지를 위해 사고 싶은 물건을 바로 안 사고 1~7일 "숙려 기간"을 거쳐 결정하는 서비스.
 
+## UI 워딩 (캠프 메타포)
+코드 식별자(`decided`, `abandoned`, `reDeliberateItem`, `dbtn--redo` 등)는 그대로 두고, **화면에 보이는 문구만** 아래 용어를 쓴다.
+
+| 개념 | UI 문구 |
+|---|---|
+| 위시템 등록 / 등록일 | 입소 / 입소일 |
+| 재숙려 | 유예 |
+| 구매 결정(`decided`) | 구매 승인 |
+| 구매 포기(`abandoned`) | 관계 종료 |
+| 결정 메뉴 / 탭 | 조정실 |
+| 통계 화면 | 캠프 기록 |
+
+- "숙려"(deliberation)는 그대로 유지. `STATUS_LABEL`(`src/lib/wishItems.ts`)이 승인/종료 문구의 단일 출처.
+- 일부 일반명사로서의 "결정"(결정 이유, 지금 결정하기 등)은 유지 중.
+
 ## 기술 스택 / 실행
 - Vite + React 18 + TypeScript, 라우팅은 react-router-dom
 - `npm run dev` 개발 서버(5173), `npm run build` 타입체크 + 프로덕션 빌드
@@ -13,7 +28,7 @@
 - 데이터 모델은 `src/types.ts`의 `WishItem`
 
 ## 화면 구조
-- `src/App.tsx` 공통 레이아웃(헤더 + Outlet + 하단 탭바). 탭: 홈 `/` / 결정 `/decision`(대기 건수 배지) / 통계 `/stats` / 등록 `/register`
+- `src/App.tsx` 공통 레이아웃(헤더 + Outlet + 하단 탭바). 탭: 홈 `/` / 조정실 `/decision`(대기 건수 배지) / 캠프 기록 `/stats` / 입소 `/register`
 - `src/pages/Home.tsx` 홈(요약 카드 3개 + 결정 대기 배너 + 숙려 중 리스트)
 - `src/pages/Register.tsx` 위시템 등록 폼 → 제출 시 `addItem` 후 홈으로 이동
 - `src/pages/Decision.tsx` 결정 대기 목록. 카드별 구매 결정 / 재숙려(1~7일, 최대 2회) / 구매 포기, 결정 이유 입력

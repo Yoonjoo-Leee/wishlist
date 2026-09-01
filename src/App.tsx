@@ -64,15 +64,15 @@ export default function App() {
               <IconDecision />
               {dueCount > 0 && <span className="tabbar__badge">{dueCount}</span>}
             </span>
-            <span>결정</span>
+            <span>조정실</span>
           </NavLink>
           <NavLink to="/stats" className={tabClass}>
             <IconStats />
-            <span>통계</span>
+            <span>캠프 기록</span>
           </NavLink>
           <NavLink to="/register" className={tabClass}>
             <IconRegister />
-            <span>등록</span>
+            <span>입소</span>
           </NavLink>
         </div>
       </nav>

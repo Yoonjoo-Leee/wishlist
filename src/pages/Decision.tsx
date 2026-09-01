@@ -79,7 +79,7 @@ function DecisionCard({ item }: { item: WishItem }) {
 
       <dl className="detail">
         <div className="detail__row">
-          <dt>등록일</dt>
+          <dt>입소일</dt>
           <dd>{formatDate(item.createdAt)}</dd>
         </div>
         <div className="detail__row">
@@ -87,7 +87,7 @@ function DecisionCard({ item }: { item: WishItem }) {
           <dd>{item.deliberationDays}일</dd>
         </div>
         <div className="detail__row">
-          <dt>재숙려</dt>
+          <dt>유예</dt>
           <dd>{item.reDeliberationCount}회</dd>
         </div>
       </dl>
@@ -103,33 +103,33 @@ function DecisionCard({ item }: { item: WishItem }) {
             className="dbtn dbtn--decide"
             onClick={() => setMode("decided")}
           >
-            구매 결정
+            구매 승인
           </button>
           <button
             className="dbtn dbtn--redo"
             onClick={() => setMode("redeliberate")}
             disabled={!canRedo}
-            title={canRedo ? undefined : "재숙려는 2회까지 가능해요"}
+            title={canRedo ? undefined : "유예는 2회까지 가능해요"}
           >
-            재숙려
+            유예
           </button>
           <button
             className="dbtn dbtn--abandon"
             onClick={() => setMode("abandoned")}
           >
-            구매 포기
+            관계 종료
           </button>
         </div>
       )}
 
       {!canRedo && mode === null && (
-        <p className="decision-hint">재숙려는 2회까지 가능해요. 이번에 결정해요.</p>
+        <p className="decision-hint">유예는 2회까지 가능해요. 이번에 결정해요.</p>
       )}
 
       {(mode === "decided" || mode === "abandoned") && (
         <div className="decision-form">
           <span className="field__label">
-            {mode === "decided" ? "구매를 결정한 이유" : "포기하기로 한 이유"}
+            {mode === "decided" ? "구매를 승인한 이유" : "관계를 종료한 이유"}
           </span>
           <textarea
             className="field__input field__textarea"
@@ -153,7 +153,7 @@ function DecisionCard({ item }: { item: WishItem }) {
               }
               onClick={() => confirmResolve(mode)}
             >
-              {mode === "decided" ? "구매 결정 확정" : "구매 포기 확정"}
+              {mode === "decided" ? "구매 승인 확정" : "관계 종료 확정"}
             </button>
           </div>
         </div>
@@ -161,7 +161,7 @@ function DecisionCard({ item }: { item: WishItem }) {
 
       {mode === "redeliberate" && (
         <div className="decision-form">
-          <span className="field__label">재숙려 기간</span>
+          <span className="field__label">유예 기간</span>
           <div className="segmented">
             {DELIBERATION_OPTIONS.map((d) => (
               <button
@@ -177,7 +177,7 @@ function DecisionCard({ item }: { item: WishItem }) {
             ))}
           </div>
           <p className="decision-hint">
-            재숙려 후 횟수는 {item.reDeliberationCount + 1}회가 돼요.
+            유예 후 횟수는 {item.reDeliberationCount + 1}회가 돼요.
           </p>
           <div className="decision-form__buttons">
             <button className="btn-ghost" onClick={reset}>
@@ -208,7 +208,7 @@ export default function Decision() {
     <div className="page">
       <div className="page-head">
         <Link to="/" className="back-link">← 홈</Link>
-        <h2 className="page-head__title">결정 대기</h2>
+        <h2 className="page-head__title">조정실</h2>
         <p className="page-head__desc">
           숙려 기간이 끝난 위시템을 다시 판단해요.
         </p>

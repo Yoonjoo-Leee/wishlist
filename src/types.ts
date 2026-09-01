@@ -39,7 +39,7 @@ export interface WishItem {
   status: WishStatus;
   /** 재숙려 횟수 (최대 2) */
   reDeliberationCount: number;
-  /** 결정 이유 (구매결정 / 구매포기 시 작성) */
+  /** 결정 이유 (구매 승인 / 관계 종료 시 작성) */
   decisionReason?: string;
   /** 결정 시각 (ISO) */
   decidedAt?: string;

@@ -132,10 +132,10 @@ export default function ItemDetail() {
           </section>
 
           <section className="detail-section">
-            <h3 className="detail-section__title">등록 정보</h3>
+            <h3 className="detail-section__title">입소 정보</h3>
             <dl className="detail">
               <div className="detail__row">
-                <dt>등록일자</dt>
+                <dt>입소일</dt>
                 <dd>{formatDate(item.createdAt)}</dd>
               </div>
             </dl>
@@ -165,7 +165,7 @@ export default function ItemDetail() {
                 <dd>{formatDate(deliberationEndsAt(item).toISOString())}</dd>
               </div>
               <div className="detail__row">
-                <dt>재숙려</dt>
+                <dt>유예</dt>
                 <dd>{item.reDeliberationCount}회</dd>
               </div>
             </dl>
