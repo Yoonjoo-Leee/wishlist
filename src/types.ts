@@ -28,7 +28,7 @@ export interface WishItem {
   /** 가격 (원) */
   price: number;
   category: WishCategory;
-  /** 사고 싶은 이유 */
+  /** 입소 사유 (사고 싶은 이유) */
   reason: string;
   /** 숙려 기간 (1~7일) */
   deliberationDays: number;

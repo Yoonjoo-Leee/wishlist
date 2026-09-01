@@ -93,7 +93,7 @@ function DecisionCard({ item }: { item: WishItem }) {
       </dl>
 
       <div className="detail__reason">
-        <span className="detail__reason-label">사고 싶은 이유</span>
+        <span className="detail__reason-label">입소 사유</span>
         <p>{item.reason}</p>
       </div>
 

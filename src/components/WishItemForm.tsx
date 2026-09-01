@@ -63,7 +63,7 @@ export default function WishItemForm({
     if (!url.trim()) next.url = "상품 링크를 입력해 주세요.";
     if (!name.trim()) next.name = "상품명을 입력해 주세요.";
     if (parsePrice(price) <= 0) next.price = "가격을 입력해 주세요.";
-    if (!reason.trim()) next.reason = "사고 싶은 이유를 적어 주세요.";
+    if (!reason.trim()) next.reason = "입소 사유를 적어 주세요.";
     return next;
   }
 
@@ -145,7 +145,7 @@ export default function WishItemForm({
       </div>
 
       <label className="field">
-        <span className="field__label">사고 싶은 이유</span>
+        <span className="field__label">입소 사유</span>
         <textarea
           className="field__input field__textarea"
           rows={3}
