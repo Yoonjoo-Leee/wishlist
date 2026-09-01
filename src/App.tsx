@@ -10,10 +10,15 @@ function IconHome() {
   );
 }
 function IconDecision() {
+  // 법봉(gavel)
   return (
     <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-      <circle cx="12" cy="12" r="8.5" />
-      <path d="m8.3 12 2.6 2.6L15.7 9" />
+      <path d="m14.5 12.5-8 8a2.12 2.12 0 1 1-3-3l8-8" />
+      <path d="m16 16 6-6" />
+      <path d="m8 8 6-6" />
+      <path d="m9 7 8 8" />
+      <path d="m21 11-8-8" />
+      <path d="M4 21h9" />
     </svg>
   );
 }
