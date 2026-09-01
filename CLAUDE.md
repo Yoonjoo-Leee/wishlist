@@ -20,8 +20,9 @@
 - 일부 일반명사로서의 "결정"(결정 이유, 지금 결정하기 등)은 유지 중.
 
 ## 기술 스택 / 실행
-- Vite + React 18 + TypeScript, 라우팅은 react-router-dom
+- Vite + React 18 + TypeScript, 라우팅은 react-router-dom (`createHashRouter` — 정적 호스팅에서 딥링크 유지)
 - `npm run dev` 개발 서버(5173), `npm run build` 타입체크 + 프로덕션 빌드
+- 배포: GitHub Pages(`.github/workflows/deploy.yml`), 자세한 절차는 `DEPLOY.md`. `vite.config.ts`의 `base`는 `VITE_BASE` 환경변수로 주입(워크플로가 `/<repo>/` 전달)
 - 상태는 `localStorage` 한 곳에만 저장. `src/lib/storage.ts`가 로드/저장, 최초 실행 시 `src/lib/dummyData.ts`로 시드
 - 목록 상태는 `src/lib/store.ts`의 모듈 스토어(`useSyncExternalStore`). `useWishItems()` 훅 + `addItem`/`updateItem`/`removeItem`/`resolveItem`/`reDeliberateItem`
 - 스토어 로드 시 결정 대기 30일 초과 항목을 자동 퇴소(관계 종료, 사유 "장기 미조정으로 자동 퇴소되었습니다.")로 스윕(`sweepAutoAbandon`)
