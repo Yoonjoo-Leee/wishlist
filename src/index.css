@@ -79,6 +79,21 @@ body {
   color: var(--muted);
 }
 
+.app-header__settings {
+  margin-left: auto;
+  align-self: center;
+  display: flex;
+  align-items: center;
+  color: var(--muted);
+  padding: 4px;
+  margin-right: -4px;
+  border-radius: 8px;
+}
+
+.app-header__settings:hover {
+  color: var(--text);
+}
+
 /* ---------- bottom tab bar ---------- */
 /* 콘텐츠 영역과 같은 폭으로 가운데 정렬해, 양옆 여백 색이 그대로 보이게 한다 */
 .tabbar {
@@ -1052,6 +1067,27 @@ body {
 .cat-fill--hobby   { background: #cf9440; }
 .cat-fill--food    { background: #d97a54; }
 .cat-fill--etc     { background: #9a9088; }
+
+/* ---------- settings ---------- */
+.settings-note {
+  font-size: 12px;
+  color: var(--muted);
+  margin: 12px 0 0;
+  line-height: 1.6;
+}
+
+.settings-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.settings-actions .btn-ghost,
+.settings-actions .btn-danger {
+  flex: 1;
+  min-width: 140px;
+}
 
 /* ---------- wider screens ---------- */
 @media (min-width: 560px) {

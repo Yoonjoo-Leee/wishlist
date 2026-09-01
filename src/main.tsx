@@ -7,6 +7,7 @@ import Register from "./pages/Register";
 import Decision from "./pages/Decision";
 import ItemDetail from "./pages/ItemDetail";
 import Stats from "./pages/Stats";
+import Settings from "./pages/Settings";
 import "./index.css";
 
 // 정적 호스팅(GitHub Pages 등)에서 새로고침·딥링크가 깨지지 않도록 해시 라우터 사용
@@ -20,6 +21,7 @@ const router = createHashRouter([
       { path: "decision", element: <Decision /> },
       { path: "item/:id", element: <ItemDetail /> },
       { path: "stats", element: <Stats /> },
+      { path: "settings", element: <Settings /> },
     ],
   },
 ]);

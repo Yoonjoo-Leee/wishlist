@@ -1,6 +1,7 @@
 import { useSyncExternalStore } from "react";
 import type { WishItem, WishStatus } from "../types";
 import { loadItems, saveItems } from "./storage";
+import { DUMMY_ITEMS } from "./dummyData";
 import { isAutoAbandonDue } from "./wishItems";
 
 /**
@@ -82,6 +83,16 @@ export function reDeliberateItem(id: string, days: number) {
     deliberationStartedAt: new Date().toISOString(),
     reDeliberationCount: item.reDeliberationCount + 1,
   });
+}
+
+/** 모든 위시템 삭제 */
+export function resetAll() {
+  setItems([]);
+}
+
+/** 현재 목록을 예시 데이터로 교체 */
+export function loadSampleData() {
+  setItems(sweepAutoAbandon(structuredClone(DUMMY_ITEMS)));
 }
 
 export function useWishItems() {

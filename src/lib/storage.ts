@@ -15,8 +15,9 @@ export function loadItems(): WishItem[] {
     console.warn("위시템 로드 실패, 초기화합니다.", err);
   }
 
-  // 최초 실행: 더미 데이터로 시드
-  if (!localStorage.getItem(SEEDED_KEY)) {
+  // 개발 환경에서만 최초 1회 예시 데이터로 시드한다.
+  // 배포본은 빈 상태로 시작하고, 샘플이 필요하면 설정 화면에서 직접 채운다.
+  if (import.meta.env.DEV && !localStorage.getItem(SEEDED_KEY)) {
     saveItems(DUMMY_ITEMS);
     localStorage.setItem(SEEDED_KEY, "1");
     return DUMMY_ITEMS;

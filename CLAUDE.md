@@ -23,7 +23,8 @@
 - Vite + React 18 + TypeScript, 라우팅은 react-router-dom (`createHashRouter` — 정적 호스팅에서 딥링크 유지)
 - `npm run dev` 개발 서버(5173), `npm run build` 타입체크 + 프로덕션 빌드
 - 배포: GitHub Pages(`.github/workflows/deploy.yml`), 자세한 절차는 `DEPLOY.md`. `vite.config.ts`의 `base`는 `VITE_BASE` 환경변수로 주입(워크플로가 `/<repo>/` 전달)
-- 상태는 `localStorage` 한 곳에만 저장. `src/lib/storage.ts`가 로드/저장, 최초 실행 시 `src/lib/dummyData.ts`로 시드
+- 상태는 `localStorage` 한 곳에만 저장. `src/lib/storage.ts`가 로드/저장. 예시 데이터 시드는 **개발 환경(`import.meta.env.DEV`)에서만** 자동 실행, 배포본은 빈 상태로 시작
+- 설정 화면에서 `resetAll()`(전체 삭제) / `loadSampleData()`(예시로 교체) 제공 (`src/lib/store.ts`)
 - 목록 상태는 `src/lib/store.ts`의 모듈 스토어(`useSyncExternalStore`). `useWishItems()` 훅 + `addItem`/`updateItem`/`removeItem`/`resolveItem`/`reDeliberateItem`
 - 스토어 로드 시 결정 대기 30일 초과 항목을 자동 퇴소(관계 종료, 사유 "장기 미조정으로 자동 퇴소되었습니다.")로 스윕(`sweepAutoAbandon`)
 - 도메인 로직(숙려 종료일, 결정 대기 여부, 재숙려 가능 여부, 카운트 등)은 `src/lib/wishItems.ts`. 숙려 종료는 `deliberationStartedAt ?? createdAt` + `deliberationDays` 기준(재숙려 시 `deliberationStartedAt` 갱신)
@@ -36,6 +37,7 @@
 - `src/pages/Decision.tsx` 결정 대기 목록. 카드별 구매 결정 / 재숙려(1~7일, 최대 2회) / 구매 포기, 결정 이유 입력
 - `src/pages/ItemDetail.tsx` `/item/:id` 상세(상품/등록/숙려 정보) + 인라인 수정(`updateItem`) / 삭제(`removeItem`, confirm)
 - `src/pages/Stats.tsx` 통계(구매 포기율 + 아낀 금액, 금액 통계 스택바, 평균 숙려일, 카테고리별 막대). 계산은 `src/lib/stats.ts`
+- `src/pages/Settings.tsx` `/settings` (헤더 우측 톱니). 데이터 위치 안내 + 예시 채우기 / 전체 초기화
 - `src/components/WishItemForm.tsx` 등록·수정 공용 폼(검증, 가격 콤마, URL 정규화). 홈 카드 전체가 `/item/:id` 링크(오버레이 방식)
 
 ## 핵심 흐름
