@@ -45,7 +45,7 @@ export default function App() {
       <header className="app-header">
         <div className="app-header__inner">
           <span className="app-header__logo">욕망템 숙려캠프</span>
-          <span className="app-header__tag">사기 전에, 며칠만</span>
+          <span className="app-header__tag">구매의 갈림길</span>
         </div>
       </header>
 
